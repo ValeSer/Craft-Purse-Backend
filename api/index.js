@@ -10,7 +10,7 @@ app.use(cors());
 app.get('/', async(req, res) => {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+    
     // Send a ping to confirm a successful connection
     const db = await client.db("Craft-Purse-Db");
     const materials = await db.collection("Materials-test").find({}).toArray()
@@ -41,7 +41,7 @@ const client = new MongoClient(uri,  {
 );
 
 async function run() {
-  
+  await client.connect();
 }
 run().catch(console.dir);
 module.exports = app
