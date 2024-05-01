@@ -12,10 +12,10 @@ app.get('/', async(req, res) => {
     // Connect the client to the server	(optional starting in v4.7)
     
     // Send a ping to confirm a successful connection
-    // const db = await client.db("Craft-Purse-Db");
-    // const materials = await db.collection("Materials-test").find({}).toArray()
+    const db = await client.db("Craft-Purse-Db");
+    const materials = await db.collection("Materials-test").find({}).toArray()
     
-    res.send('materials[0].name');
+    res.send(materials[0].name);
   } catch(e){
     res.send('error')
   } 
