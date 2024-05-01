@@ -16,6 +16,8 @@ app.get('/', async(req, res) => {
     const materials = await db.collection("Materials-test").find({}).toArray()
     
     res.send(materials[0].name);
+  } catch(e){
+    res.send(e)
   } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
