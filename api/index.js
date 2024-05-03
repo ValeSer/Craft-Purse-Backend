@@ -1,9 +1,9 @@
-require('dotenv').config()
+require('dotenv').config();
+const client = require("./mongoconfig");
 const express = require('express');
 const app = express();
 const port = 3000;
-const cors = require('cors')
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const cors = require('cors');
 
 app.use(cors());
 
@@ -22,20 +22,4 @@ app.listen(3000, () => {
   console.log(`Server is running at http://localhost:${port}`);
 })
 
-// Replace the placeholder with your Atlas connection string
-const uri = process.env.DB_URL;
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri,  {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    }
-  }
-);
-
-async function run() {
-  await client.connect();
-}
-run().catch(console.dir);
 module.exports = app
