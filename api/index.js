@@ -1,11 +1,11 @@
+const MaterialController = require('./controllers/material')
 require('dotenv').config();
 const client = require("./mongoconfig");
 const express = require('express');
 const app = express();
 const port = 3000;
 const cors = require('cors');
-const Material = require('./models/material');
-
+app.use(express.json());
 app.use(cors());
 
 app.get('/', async(req, res) => {
@@ -17,6 +17,11 @@ app.get('/', async(req, res) => {
     res.send(e)
   } 
 });
+
+app.post('/material', MaterialController.CreateMaterial)
+
+
+
 client().then(() => {
   app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
