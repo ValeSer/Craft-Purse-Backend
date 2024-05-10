@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const uri = process.env.DB_URL || "mongodb://0.0.0.0/craftPurse";
+const uri = process.env.DB_URL;
 
 const client = async () => {
   try {

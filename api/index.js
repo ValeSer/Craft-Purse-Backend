@@ -1,12 +1,16 @@
-const MaterialController = require('./controllers/material')
-require('dotenv').config();
-const client = require("./mongoconfig");
 const express = require('express');
 const app = express();
-const port = 3000;
 const cors = require('cors');
-app.use(express.json());
+const Material = require('./models/material')
+
+const MaterialController = require('./controllers/material')
 app.use(cors());
+app.use(express.json());
+
+require('dotenv').config();
+const client = require("./mongoconfig");
+
+const port = 3000;
 
 app.get('/', async(req, res) => {
   try {
@@ -19,7 +23,6 @@ app.get('/', async(req, res) => {
 });
 
 app.post('/material', MaterialController.CreateMaterial)
-
 
 
 client().then(() => {
