@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const Material = require('./models/material')
 
+const Material = require('./models/material')
 const MaterialController = require('./controllers/material')
+
 app.use(cors());
 app.use(express.json());
 
