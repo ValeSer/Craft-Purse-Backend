@@ -25,6 +25,8 @@ app.get('/', async(req, res) => {
 
 app.post('/material', MaterialController.CreateMaterial)
 
+app.delete('/material/:materialId', MaterialController.DeleteMaterial)
+
 
 client().then(() => {
   app.listen(port, () => {
