@@ -6,6 +6,11 @@ const MaterialController = {
     material.name = req.body.name;
     material.quantityLeft = req.body.quantityLeft;
     material.save().then((item) => res.status(201).json({message:'OK', data: item}))
+  },
+
+  DeleteMaterial: async(req,res) => {
+    await Material.deleteOne({_id: req.params.materialId})
+    res.send('200 ok deleted')
   }
 }
 
