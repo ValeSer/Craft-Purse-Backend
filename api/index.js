@@ -19,6 +19,8 @@ app.post('/material', MaterialController.CreateMaterial)
 
 app.delete('/material/:materialId', MaterialController.DeleteMaterial)
 
+app.patch('/material', MaterialController.EditMaterial)
+
 
 client().then(() => {
   app.listen(port, () => {

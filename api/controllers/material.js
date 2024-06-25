@@ -22,6 +22,16 @@ const MaterialController = {
   DeleteMaterial: async(req,res) => {
     await Material.deleteOne({_id: req.params.materialId})
     res.send('200 ok deleted')
+  },
+
+  EditMaterial: async(req,res) => {
+    updateObj = {
+      name: req.body.name,
+      quantityLeft: req.body.quantityLeft
+    }
+    
+    Material.updateOne({_id: req.body.materialId}, updateObj)
+      .then((item) => res.status(201).json({message:'OK', data: item}))
   }
 }
 
