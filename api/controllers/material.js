@@ -1,6 +1,17 @@
 const Material = require('../models/material')
 
 const MaterialController = {
+
+  GetMaterials: async(req, res) => {
+    try {
+      const materials = await Material.find({})
+      res.status(200).json(materials)
+    } catch(e){
+      console.log(e)
+      res.send(e)
+    } 
+  },
+
   CreateMaterial: async(req, res) => {
     const material = new Material();
     material.name = req.body.name;

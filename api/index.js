@@ -13,15 +13,7 @@ const client = require("./mongoconfig");
 
 const port = 3000;
 
-app.get('/', async(req, res) => {
-  try {
-    const materials = await Material.find({})
-    res.status(200).json(materials)
-  } catch(e){
-    console.log(e)
-    res.send(e)
-  } 
-});
+app.get('/', MaterialController.GetMaterials);
 
 app.post('/material', MaterialController.CreateMaterial)
 
