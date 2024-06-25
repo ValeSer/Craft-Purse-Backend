@@ -2,10 +2,13 @@ const mongoose = require('mongoose');
 
 const MaterialSchema = new mongoose.Schema({
   name: {
-    type: String
+    type: String,
+    required: true,
   },
   quantityLeft: {
-    type: Number
+    type: Number,
+    required: true,
+    min: 0
   },
   cost: {
     type: Number 

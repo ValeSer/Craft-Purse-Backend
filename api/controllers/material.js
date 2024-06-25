@@ -16,7 +16,12 @@ const MaterialController = {
     const material = new Material();
     material.name = req.body.name;
     material.quantityLeft = req.body.quantityLeft;
-    material.save().then((item) => res.status(201).json({message:'OK', data: item}))
+    material.save()
+      .then((item) => res.status(201).json({message:'OK', data: item}))
+      .catch(e => {
+        console.log(e)
+        res.send(e)
+      })
   },
 
   DeleteMaterial: async(req,res) => {
@@ -30,8 +35,12 @@ const MaterialController = {
       quantityLeft: req.body.quantityLeft
     }
     
-    Material.updateOne({_id: req.body.materialId}, updateObj)
+    Material.updateOne({_id: req.body.materialId}, updateObj, { runValidators: true })
       .then((item) => res.status(201).json({message:'OK', data: item}))
+      .catch(e => {
+        console.log(e)
+        res.send(e)
+      });
   }
 }
 
