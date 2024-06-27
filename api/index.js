@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const Material = require('./models/material')
 const MaterialController = require('./controllers/material')
+const SignUpController = require('./controllers/signUp')
 
 app.use(cors());
 app.use(express.json());
@@ -14,12 +15,12 @@ const client = require("./mongoconfig");
 const port = 3000;
 
 app.get('/', MaterialController.GetMaterials);
-
 app.post('/material', MaterialController.CreateMaterial)
-
 app.delete('/material/:materialId', MaterialController.DeleteMaterial)
-
 app.patch('/material', MaterialController.EditMaterial)
+
+app.post('/signup', SignUpController.SignUp)
+
 
 
 client().then(() => {
